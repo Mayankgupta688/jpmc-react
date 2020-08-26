@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import RenderEmployeeList from "./component/RenderEmployeeList";
+import WorkingWithForms from "./HooksImplementation/WorkingWithForms";
 
 
 ReactDOM.render(
-    <RenderEmployeeList></RenderEmployeeList>,
+    <div>
+        <WorkingWithForms></WorkingWithForms>
+    </div>,
     document.getElementById("myOwnDiv")
 )

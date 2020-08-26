@@ -5,7 +5,8 @@ function DisplayUser(props) {
         <div>
             <h1>Updated Employee Name is: {props.employee.name}</h1>
             <h2>Employee Age is: {props.employee.age}</h2>
-            <h3>Employee Designation is: {props.employee.designation}</h3><hr/>
+            <h3>Employee Designation is: {props.employee.designation}</h3>
+            Additional Employee Details: <input type="text" /><hr/>
         </div>
     )
 }
@@ -20,11 +21,19 @@ export default class RenderEmployeeList extends React.Component {
             designation: "developer Updated..."
         }
         this.state = {
-            employeeList: [this.userObject, {
+            employeeList: [
+            {
+                id: 5,
+                name: this.userName[0],
+                age: 10,
+                designation: "developer Updated..."
+            }, {
+                id: 2,
                 name: this.userName[1],
                 age: 10,
                 designation: "developer"
             }, {
+                id: 2,
                 name: this.userName[2],
                 age: 10,
                 designation: "developer"
@@ -36,10 +45,12 @@ export default class RenderEmployeeList extends React.Component {
         this.setState({
             employeeList: [
                 {
+                    id: 3,
                     name: "djhfdsokf",
                     age: 100,
                     designation: "jsagdkaj"
                 },{
+                    id: "4",
                     name: "dfhdskhfslkfhkdhfldskhfl",
                     age: 100,
                     designation: "jsagdkaj"
@@ -53,8 +64,8 @@ export default class RenderEmployeeList extends React.Component {
         return (
             <div>
                 { 
-                    this.state.employeeList.map((employee) => {
-                        return <DisplayUser employee={employee}></DisplayUser>
+                    this.state.employeeList.map((employee, index) => {
+                        return <DisplayUser key={index + "_" + employee.id} employee={employee}></DisplayUser>
                     }) 
                 }
 
