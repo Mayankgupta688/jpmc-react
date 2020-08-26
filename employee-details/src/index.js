@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import DynamicStyleComponent from "./component/DynamicStyleComponent";
+import RenderEmployeeList from "./component/RenderEmployeeList";
+
 
 ReactDOM.render(
-    <DynamicStyleComponent></DynamicStyleComponent>,
+    <RenderEmployeeList></RenderEmployeeList>,
     document.getElementById("myOwnDiv")
 )
