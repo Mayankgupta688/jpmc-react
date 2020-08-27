@@ -1,12 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import WorkingWithForms from "./HooksImplementation/WorkingWithForms";
+import SimpleRouting from "./routing/SimpleRouting";
 
+function ComponentOne() {
+    return <h1>This is Base Component</h1>
+}
 
 ReactDOM.render(
     <div>
-        <WorkingWithForms></WorkingWithForms>
+        <SimpleRouting></SimpleRouting>
     </div>,
     document.getElementById("myOwnDiv")
 )
+

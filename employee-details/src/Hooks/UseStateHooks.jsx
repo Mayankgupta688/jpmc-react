@@ -1,47 +1,31 @@
-import React, {useState, useEffect} from "react";
-import Axios from "axios";
+import React, {useState} from "react";
 
 export default function UseStateHooks(props) {
 
-    var [name, setName] = useState("Mayank");
-    var [age, setAge] = useState(0);
-    var [employees, setEmployees] = useState([]);
-
     var [user, setUser] = useState({
         name: "Mayank",
-        age: 10
-    })
+        age: 20,
+        designation: "Developer"
+    });
 
-    useEffect(() => {
-        Axios.get("http://5c055de56b84ee00137d25a0.mockapi.io/api/v1/employees").then((response) => {
-            debugger;
-            setEmployees(response.data);
-        })
-    }, [])
-
-    function updateUseName(event) {
+    function updateUserData(event) {
         setUser({
-            [event.target.className]: event.target.value
+            ...user,
+            [event.target.name]: event.target.value
         })
     }
-    debugger;
+
+    function getData() {
+        console.dir(user)
+    }
+
     return (
         <div>
-            <h1>Hello {user.name}...</h1>
-            <h1>User Age: {user.age}...</h1>
-            {props.children[1]}<br/>
-
-            {employees.map((employee) => {
-                return (
-                    <div>
-                        <h1>Name: {employee.name}</h1>
-                    </div>
-                )
-            })}
-
-            <input type="text" value={user.name} class="name" onChange={updateUseName} />
-            <input type="text" value={user.age} class="age" onChange={updateUseName} />
-            <input type="button" value="Update Name" onClick={updateUseName} />
+            Enter User Name: <input data-updatevariable="name" name="name" className="name"  type="text" value={user.name} onChange={updateUserData} /><br/><br/>
+            Enter User Age: <input name="age"  className="age" type="number" value={user.age}  onChange={updateUserData} /><br/><br/>
+            { user.age <= 0 && <div><b style={{"color": "red"}}>Age Cannot be Less than Equal to Zero...</b><br/><br/></div> }
+            Enter User Designation: <input  className="designation" type="text" value={user.designation}  onChange={updateUserData} /><br/><br/>
+            <input type="button" value="Get Updated Data" onClick={getData} />
         </div>   
     )
 }
